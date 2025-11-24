@@ -1,0 +1,66 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Información profesional sobre prácticas odontológicas modernas." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Info Odontología</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-slate-50 text-slate-900 font-['Inter',sans-serif] flex flex-col min-h-screen">
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-blue-600 flex items-center gap-2 hover:text-blue-700 transition-colors">
+                    <span class="text-3xl">🦷</span> InfoOdonto
+                </a>
+                <ul class="flex space-x-6 text-sm font-medium text-slate-600">
+                    <li><a href="/" class="hover:text-blue-600 transition-colors">Inicio</a></li>
+                    <li><a href="/#practicas" class="hover:text-blue-600 transition-colors">Prácticas</a></li>
+                </ul>
+            </nav>
+        </header>
+
+		<main class="flex-grow">
+			<slot />
+		</main>
+
+        <footer class="bg-slate-900 text-slate-300 py-12 mt-auto">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-4">InfoOdonto</h3>
+                        <p class="text-slate-400 text-sm">Tu fuente confiable de información odontológica. Comprometidos con la educación y la salud bucal.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-4">Enlaces Rápidos</h3>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li><a href="/" class="hover:text-white transition-colors">Inicio</a></li>
+                            <li><a href="/#practicas" class="hover:text-white transition-colors">Procedimientos</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-4">Contacto</h3>
+                        <p class="text-slate-400 text-sm">info@infoodonto.com</p>
+                        <p class="text-slate-400 text-sm">+1 234 567 890</p>
+                    </div>
+                </div>
+                <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+                    <p>&copy; {new Date().getFullYear()} Info Odontología. Todos los derechos reservados.</p>
+                    <p class="mt-2">Información con fines educativos únicamente.</p>
+                </div>
+            </div>
+        </footer>
+	</body>
+</html>

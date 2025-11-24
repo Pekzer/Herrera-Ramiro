@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+  const practices = await getCollection('practices');
+  return practices.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<MainLayout title={entry.data.title}>
+    <div class="bg-slate-50 border-b border-slate-200">
+        <div class="container mx-auto px-4 py-8">
+            <a href="/#practicas" class="text-slate-500 hover:text-blue-600 text-sm font-medium mb-4 inline-flex items-center gap-1 transition-colors">
+                &larr; Volver a prácticas
+            </a>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">{entry.data.title}</h1>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-10 border border-slate-100">
+            <div class="aspect-video w-full bg-black">
+                <iframe 
+                    src={entry.data.videoUrl} 
+                    title={entry.data.title}
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="w-full h-full">
+                </iframe>
+            </div>
+            <div class="p-4 bg-blue-50 border-t border-blue-100 flex items-center gap-3 text-blue-800 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Mira el video explicativo para entender mejor el procedimiento.</span>
+            </div>
+        </div>
+
+        <article class="prose prose-lg prose-slate max-w-none 
+            prose-headings:font-bold prose-headings:text-slate-800 
+            prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-slate-900
+            bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-100">
+            <Content />
+        </article>
+    </div>
+</MainLayout>
