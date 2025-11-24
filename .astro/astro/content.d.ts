@@ -148,6 +148,20 @@ declare module 'astro:content' {
   collection: "practices";
   data: InferEntrySchema<"practices">
 } & { render(): Render[".md"] };
+"perno-fibra-vidrio-corona.md": {
+	id: "perno-fibra-vidrio-corona.md";
+  slug: "perno-fibra-vidrio-corona";
+  body: string;
+  collection: "practices";
+  data: InferEntrySchema<"practices">
+} & { render(): Render[".md"] };
+"restauracion-fotocurado.md": {
+	id: "restauracion-fotocurado.md";
+  slug: "restauracion-fotocurado";
+  body: string;
+  collection: "practices";
+  data: InferEntrySchema<"practices">
+} & { render(): Render[".md"] };
 "tratamiento-conducto.md": {
 	id: "tratamiento-conducto.md";
   slug: "tratamiento-conducto";
