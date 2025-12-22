@@ -39,7 +39,7 @@ const practices = await getCollection('practices');
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {practices.map(practice => (
-                <a href={`${import.meta.env.BASE_URL}practices/${practice.slug}`} class="group h-full">
+                <a href={`${import.meta.env.BASE_URL}/practices/${practice.slug}`} class="group h-full">
                     <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 h-full flex flex-col transform hover:-translate-y-1">
                         <div class="h-56 bg-slate-100 relative overflow-hidden">
                             <!-- Placeholder for thumbnail, using a gradient for now -->
